@@ -56,7 +56,7 @@
   const contactLink = document.querySelector(".contact-email");
   if (contactLink && toast) {
     contactLink.addEventListener("click", () => {
-      toast.textContent = "Your email app should open. Confirm hello@nettoon.co is an active inbox before publishing.";
+      toast.textContent = "Your email app should open. Confirm nettoon254@gmail.com is an active inbox before publishing.";
       toast.classList.add("is-visible");
       window.setTimeout(() => toast.classList.remove("is-visible"), 4200);
     });
