@@ -2393,6 +2393,7 @@ html[data-theme="dark"] .brand-word .brand-toon {
   padding: 70px 0;
   background: var(--brand-red);
   color: #fff;
+
 }
 .team-join-inner {
   display: flex;
@@ -2403,6 +2404,7 @@ html[data-theme="dark"] .brand-word .brand-toon {
 .team-join h2 {
   max-width: 650px;
   margin: 0;
+  font-size: 2rem;
 }
 .team-join h2 em {
   color: var(--brand-yellow);
@@ -2634,7 +2636,7 @@ html[data-theme="dark"] .site-header .brand-word .brand-toon {
     }
 }
 
-```css
+
 /* CONSISTENT NETTOON WORDMARK — HEADER AND FOOTER */
 .site-header .brand,
 .brand-footer {
