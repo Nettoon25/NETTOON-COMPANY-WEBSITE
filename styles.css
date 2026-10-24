@@ -24,7 +24,7 @@ html {
 }
 body {
   margin: 0;
-  background: var(--ink);
+  background: transparent;
   color: var(--white);
   font-family: var(--font-body);
   font-size: 16px;
@@ -566,10 +566,11 @@ h1 em,h2 em {
   margin-bottom: 5px;
 }
 .platform-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  border-top: 1px solid var(--line-dark);
-  border-bottom: 1px solid var(--line-dark);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 24px;
+    border: none;
 }
 .platform-card {
   position: relative;
@@ -1453,7 +1454,7 @@ html[data-theme="dark"] .footer-note-label {
   color-scheme: light;
 }
 body {
-  background: var(--paper);
+  background: transparent;
   color: #090909;
   transition: background .25s,color .25s;
 }
@@ -1608,7 +1609,7 @@ html[data-theme="dark"] {
   --line-light: rgba(255,255,255,.16);
 }
 html[data-theme="dark"] body {
-  background: #111110;
+  background: transparent;
   color: #f9f7ef;
 }
 html[data-theme="dark"] .site-header {
@@ -2709,3 +2710,544 @@ html[data-theme="dark"] .brand-footer .brand-word .brand-toon {
     margin-right: 0.095em;
 }
 
+
+.editorial-photo {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.editorial-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Keep the caption overlaid at the bottom of the image */
+.editorial-photo figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 1.5rem 1.5rem;
+    line-height: 1.5;
+    color: #fff;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75),
+        transparent
+    );
+}
+
+
+.creator-visual {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+    aspect-ratio: 4 / 5;
+}
+
+.creator-mockup {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.roots-art {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 4px;
+}
+
+.roots-mockup {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .roots-art {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+
+
+.editorial-photo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Image on the left */
+.editorial-photo {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Text on the right */
+.editorial-photo-copy {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Image sizing */
+.editorial-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    .editorial-photo-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .editorial-photo,
+    .editorial-photo-copy {
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+
+
+/* Main footer layout */
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Footer brand */
+.footer-brand-block {
+    flex: 0 1 auto;
+}
+
+/* North Star section */
+.footer-note {
+    max-width: 350px;
+    margin-left: auto;
+}
+
+/* Push footer-bottom content to the far right */
+.footer-bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .footer-main {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .footer-note {
+        margin-left: 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+    }
+}
+
+
+
+/* =========================================
+   NETTOON HERO — FULL-WIDTH IMAGE BACKGROUND
+========================================= */
+
+.hero.section-shell {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Full-width background image */
+.hero-background-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 0.24;
+    filter: saturate(0.75) contrast(0.95);
+
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Soft overlay to preserve text readability */
+.hero.section-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(247, 245, 242, 0.92) 0%,
+        rgba(247, 245, 242, 0.76) 48%,
+        rgba(247, 245, 242, 0.56) 100%
+    );
+
+    pointer-events: none;
+}
+
+/* Keep the existing hero content above the image */
+.hero.section-shell .hero-layout {
+    position: relative;
+    z-index: 2;
+}
+
+.hero.section-shell .hero-bottom-rule {
+    z-index: 2;
+}
+
+/* Dark-mode overlay */
+html[data-theme="dark"] .hero.section-shell::after {
+    background: transparent;
+}
+
+/* Mobile: keep the image full-width and cover the hero */
+@media (max-width: 760px) {
+    .hero-background-image {
+        object-position: center;
+        opacity: 0.20;
+    }
+
+    .hero.section-shell::after {
+    background: transparent;
+    }
+
+    html[data-theme="dark"] .hero.section-shell::after {
+        background: rgba(9, 9, 9, 0.82);
+    }
+}
+
+/* =========================================
+   NETTOON TICKER — CONTINUOUS RIGHT TO LEFT
+========================================= */
+
+.ticker {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: max-content;
+    flex-wrap: nowrap;
+
+    animation: ticker-scroll 25s linear infinite;
+    will-change: transform;
+}
+
+.ticker-track span,
+.ticker-track b {
+    flex-shrink: 0;
+}
+
+.ticker-track b {
+    display: inline-block;
+}
+
+/* Move continuously from right to left */
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause while the user hovers over the ticker */
+.ticker:hover .ticker-track {
+    animation-play-state: paused;
+}
+
+/* Respect reduced-motion accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+        animation: none;
+    }
+}
+
+
+/* =========================================
+   NETTOON HERO — CONSISTENT IMAGE EFFECT
+   LIGHT MODE + DARK MODE
+========================================= */
+
+/* =========================================
+   HERO — FULL VIEWPORT HEIGHT
+========================================= */
+
+.hero.section-shell {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
+    isolation: isolate;
+    box-sizing: border-box;
+}
+
+/* Background image fills the entire viewport-height hero */
+.hero-background-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+/* Keep overlay and content layered correctly */
+.hero.section-shell::after {
+    z-index: 1;
+}
+
+.hero.section-shell .hero-layout {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    box-sizing: border-box;
+    align-content: center;
+}
+
+.hero.section-shell .hero-bottom-rule {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+/* =========================================
+   FORCE IDENTICAL HERO IMAGE EFFECT
+   IN LIGHT AND DARK MODE
+========================================= */
+
+html[data-theme="light"] .hero-background-image,
+html[data-theme="dark"] .hero-background-image {
+    opacity: 0.55 !important;
+    filter: saturate(0.75) contrast(0.95) !important;
+    mix-blend-mode: normal !important;
+}
+
+/* Remove theme-specific overlay differences */
+html[data-theme="light"] .hero.section-shell::after,
+html[data-theme="dark"] .hero.section-shell::after {
+    background: rgba(247, 245, 242, 0.35) !important;
+    opacity: 1 !important;
+}
+
+/* Prevent the hero container from tinting the image */
+html[data-theme="light"] .hero.section-shell,
+html[data-theme="dark"] .hero.section-shell {
+    background-image: none !important;
+}
+
+/* Keep content above the image */
+.hero.section-shell .hero-layout,
+.hero.section-shell .hero-bottom-rule {
+    position: relative;
+    z-index: 2;
+}
+
+
+@media (max-width: 760px) {
+    .hero.section-shell {
+        height: auto;
+        min-height: 100svh;
+    }
+
+    .hero.section-shell .hero-layout {
+        height: auto;
+        min-height: 100svh;
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .hero-background-image {
+        height: 80%;
+    }
+}
+
+
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: max-content;
+    white-space: nowrap;
+    animation: ticker-scroll 25s linear infinite;
+}
+
+.ticker-track .country {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.ticker-track .country img {
+    display: block;
+    width: 32px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.ticker-track b {
+    flex-shrink: 0;
+}
+
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Ticker sticks beneath the header while scrolling */
+.ticker {
+    position: sticky;
+    top: var(--header-height, 80px);
+    z-index: 100;
+    width: 100%;
+    overflow: hidden;
+    background: var(--background, #fff);
+}
+
+/* Scrolling country track */
+.ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: max-content;
+    white-space: nowrap;
+    animation: ticker-scroll 25s linear infinite;
+      background: #121212;
+}
+
+.ticker-track .country {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.ticker-track .country img {
+    display: block;
+    width: 32px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.ticker-track b {
+    flex-shrink: 0;
+}
+
+.ticker-track .country {
+
+    background: #121212;
+    color: white;
+
+}
+
+.ticker-track .country span {
+    display: inline-block;
+    background: #121212;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Main heading — red in both modes */
+.hero-copy h1 {
+    color: #FF0000;
+}
+
+/* Light mode — black emphasized text */
+html[data-theme="light"] .hero-copy h1 em {
+    color: #000000;
+}
+
+/* Dark mode — yellow emphasized text */
+html[data-theme="dark"] .hero-copy h1 em {
+    color: #FFFF00;
+}
