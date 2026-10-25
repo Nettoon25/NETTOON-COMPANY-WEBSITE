@@ -3550,82 +3550,135 @@ html[data-theme="dark"] section.editorial-photo-section .editorial-photo-copy h1
     color: #ffd629 !important;
 }
 
-
 /* =========================================
-   MOBILE NAVIGATION — HEADER ACTIONS
+   MOBILE NAVIGATION — FULL-WIDTH PANEL
 ========================================= */
 
 @media (max-width: 768px) {
 
-    /* Make the navigation a dropdown panel */
+    /* Header establishes the positioning context */
     .nav-wrap {
         position: relative;
     }
 
+    /* Full-width mobile navigation dropdown */
     .primary-nav {
         display: none;
-    }
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
 
-    .primary-nav.is-open {
-        display: flex;
+        width: 100vw;
+        max-width: 100vw;
+        box-sizing: border-box;
+
         flex-direction: column;
         align-items: stretch;
+        gap: 0;
+
+        margin: 0;
+        padding: 18px 24px 24px;
+
+        background: var(--background, #080808);
+        z-index: 1000;
     }
 
-    /* Keep theme and contact actions inside the menu */
+    /* Display the expanded navigation */
+    .primary-nav.is-open {
+        display: flex;
+    }
+
+    /* Navigation links */
+    .primary-nav a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px 14px;
+
+        border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+        text-align: left;
+    }
+
+    /* Hide header actions until the menu opens */
     .nav-actions {
         display: none;
     }
 
+    /* Place actions directly after the navigation links */
     .primary-nav.is-open + .nav-actions {
         display: flex;
+        position: relative;
+
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
+
         width: 100%;
-        padding: 16px 0;
+        box-sizing: border-box;
+        padding: 16px 24px 24px;
+        margin: 0;
+
+        background: var(--background, #080808);
+        z-index: 1001;
     }
 
     .nav-actions .theme-toggle,
     .nav-actions .nav-cta {
+        display: flex;
         width: 100%;
-        justify-content: center;
         box-sizing: border-box;
+        justify-content: center;
     }
-}
 
-
-/* MOBILE HAMBURGER ICON — visible in both themes */
-@media (max-width: 768px) {
+    /* Hamburger button */
     .menu-toggle {
         display: flex !important;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 6px;
+
         width: 44px;
         height: 44px;
         padding: 10px;
+
         background: transparent;
         border: 1px solid transparent;
         border-radius: 8px;
+
         cursor: pointer;
         position: relative;
-        z-index: 1001;
+        z-index: 1003;
+        flex-shrink: 0;
     }
 
-    /* The two lines forming the menu icon */
+    /* Hamburger lines — light theme */
     .menu-toggle span {
         display: block !important;
         width: 24px;
         height: 2px;
         border-radius: 2px;
+
         background-color: #171717 !important;
         transition: background-color 0.2s ease;
     }
 
-    /* Dark mode — white lines */
+    /* Hamburger lines — dark theme */
     html[data-theme="dark"] .menu-toggle span {
         background-color: #ffffff !important;
+    }
+
+    /*
+       Move the toggle below the navigation and actions
+       when the menu is expanded.
+    */
+    .nav-wrap:has(.primary-nav.is-open) .menu-toggle {
+        position: absolute;
+        top: auto;
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1003;
     }
 }
