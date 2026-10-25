@@ -2894,16 +2894,22 @@ html[data-theme="dark"] .brand-footer .brand-word .brand-toon {
 }
 
 
+/* =========================================================
+   NETTOON HERO — CONSOLIDATED STYLING
+   Reduced overlay brightness | Light + Dark Mode
+   ========================================================= */
 
-/* =========================================
-   NETTOON HERO — FULL-WIDTH IMAGE BACKGROUND
-========================================= */
-
+/* Main hero container */
 .hero.section-shell {
     position: relative;
     isolation: isolate;
     overflow: hidden;
+    box-sizing: border-box;
     width: 100%;
+    height: 630px;
+    min-height: 0;
+    padding: 0;
+    background-image: none !important;
 }
 
 /* Full-width background image */
@@ -2911,208 +2917,73 @@ html[data-theme="dark"] .brand-footer .brand-word .brand-toon {
     position: absolute;
     inset: 0;
     z-index: 0;
-
     display: block;
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center;
-
-    opacity: 0.24;
+    opacity: 0.42;
     filter: saturate(0.75) contrast(0.95);
-
+    mix-blend-mode: normal;
     pointer-events: none;
     user-select: none;
 }
 
-/* Soft overlay to preserve text readability */
-.hero.section-shell::after {
+/* Light-mode overlay — subtle and less bright */
+html[data-theme="light"] .hero.section-shell::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
-
-    background: linear-gradient(
-        90deg,
-        rgba(247, 245, 242, 0.92) 0%,
-        rgba(247, 245, 242, 0.76) 48%,
-        rgba(247, 245, 242, 0.56) 100%
-    );
-
+    background: rgba(247, 245, 242, 0.18);
     pointer-events: none;
 }
 
-/* Keep the existing hero content above the image */
-.hero.section-shell .hero-layout {
-    position: relative;
-    z-index: 2;
-}
-
-.hero.section-shell .hero-bottom-rule {
-    z-index: 2;
-}
-
-/* Dark-mode overlay */
-html[data-theme="dark"] .hero.section-shell::after {
-    background: transparent;
-}
-
-/* Mobile: keep the image full-width and cover the hero */
-@media (max-width: 760px) {
-    .hero-background-image {
-        object-position: center;
-        opacity: 0.20;
-    }
-
-    .hero.section-shell::after {
-    background: transparent;
-    }
-
-    html[data-theme="dark"] .hero.section-shell::after {
-        background: rgba(9, 9, 9, 0.82);
-    }
-}
-
-/* =========================================
-   NETTOON TICKER — CONTINUOUS RIGHT TO LEFT
-========================================= */
-
-.ticker {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.ticker-track {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    width: max-content;
-    flex-wrap: nowrap;
-
-    animation: ticker-scroll 25s linear infinite;
-    will-change: transform;
-}
-
-.ticker-track span,
-.ticker-track b {
-    flex-shrink: 0;
-}
-
-.ticker-track b {
-    display: inline-block;
-}
-
-/* Move continuously from right to left */
-@keyframes ticker-scroll {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-/* Pause while the user hovers over the ticker */
-.ticker:hover .ticker-track {
-    animation-play-state: paused;
-}
-
-/* Respect reduced-motion accessibility preferences */
-@media (prefers-reduced-motion: reduce) {
-    .ticker-track {
-        animation: none;
-    }
-}
-
-
-/* =========================================
-   NETTOON HERO — CONSISTENT IMAGE EFFECT
-   LIGHT MODE + DARK MODE
-========================================= */
-
-/* =========================================
-   HERO — FULL VIEWPORT HEIGHT
-========================================= */
-
-.hero.section-shell {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    height: 100svh;
-    min-height: 0;
-    overflow: hidden;
-    isolation: isolate;
-    box-sizing: border-box;
-}
-
-/* Background image fills the entire viewport-height hero */
-.hero-background-image {
+/* LIGHT MODE — DARKER HERO OVERLAY */
+html[data-theme="light"] .hero.section-shell::after {
+    content: "";
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-}
-
-/* Keep overlay and content layered correctly */
-.hero.section-shell::after {
     z-index: 1;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: none;
 }
 
+/* Keep hero content above the image and overlay */
 .hero.section-shell .hero-layout {
     position: relative;
     z-index: 2;
+    display: grid;
     height: 100%;
+    min-height: 0;
     box-sizing: border-box;
     align-content: center;
+    padding-block: 45px;
+    gap: 24px;
 }
 
 .hero.section-shell .hero-bottom-rule {
     position: absolute;
+    z-index: 3;
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 2;
-}
-/* =========================================
-   FORCE IDENTICAL HERO IMAGE EFFECT
-   IN LIGHT AND DARK MODE
-========================================= */
-
-html[data-theme="light"] .hero-background-image,
-html[data-theme="dark"] .hero-background-image {
-    opacity: 0.55 !important;
-    filter: saturate(0.75) contrast(0.95) !important;
-    mix-blend-mode: normal !important;
 }
 
-/* Remove theme-specific overlay differences */
-html[data-theme="light"] .hero.section-shell::after,
-html[data-theme="dark"] .hero.section-shell::after {
-    background: rgba(247, 245, 242, 0.35) !important;
-    opacity: 1 !important;
+/* NETTOON heading colours */
+.hero-copy h1 {
+    color: #ff0000;
 }
 
-/* Prevent the hero container from tinting the image */
-html[data-theme="light"] .hero.section-shell,
-html[data-theme="dark"] .hero.section-shell {
-    background-image: none !important;
+html[data-theme="light"] .hero-copy h1 em {
+    color: #000000;
 }
 
-/* Keep content above the image */
-.hero.section-shell .hero-layout,
-.hero.section-shell .hero-bottom-rule {
-    position: relative;
-    z-index: 2;
+html[data-theme="dark"] .hero-copy h1 em {
+    color: #ffff00;
 }
 
-
+/* Mobile layout */
 @media (max-width: 760px) {
     .hero.section-shell {
         height: auto;
@@ -3120,83 +2991,94 @@ html[data-theme="dark"] .hero.section-shell {
     }
 
     .hero.section-shell .hero-layout {
+        grid-template-columns: 1fr;
         height: auto;
         min-height: 100svh;
-        padding-top: 100px;
-        padding-bottom: 50px;
+        padding: 100px 0 50px;
+        gap: 24px;
     }
 
     .hero-background-image {
-        height: 80%;
+        height: 100%;
+        object-position: center;
+        opacity: 0.36;
+    }
+
+    html[data-theme="light"] .hero.section-shell::after {
+        background: rgba(247, 245, 242, 0.22);
+    }
+
+    html[data-theme="dark"] .hero.section-shell::after {
+        background: rgba(9, 9, 9, 0.42);
     }
 }
 
 
-
-.ticker-track {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    width: max-content;
-    white-space: nowrap;
-    animation: ticker-scroll 25s linear infinite;
-}
-
-.ticker-track .country {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-}
-
-.ticker-track .country img {
-    display: block;
-    width: 32px;
-    height: 22px;
-    object-fit: cover;
-    border-radius: 2px;
-    flex-shrink: 0;
-}
-
-.ticker-track b {
-    flex-shrink: 0;
-}
-
-@keyframes ticker-scroll {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
+@media (max-width: 760px) {
+    html[data-theme="light"] .hero.section-shell::after {
+        background: rgba(0, 0, 0, 0.62);
     }
 }
 
-/* Ticker sticks beneath the header while scrolling */
+/* LIGHT MODE — MORE VISIBLE BACKGROUND IMAGE */
+html[data-theme="light"] .hero-background-image {
+    opacity: 0.70;
+    filter: saturate(0.90) contrast(1.05);
+}
+
+/* Reduce the black overlay to reveal more of the image */
+html[data-theme="light"] .hero.section-shell::after {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+    html[data-theme="light"] .hero-background-image {
+        opacity: 0.65;
+    }
+
+    html[data-theme="light"] .hero.section-shell::after {
+        background: rgba(0, 0, 0, 0.42);
+    }
+}
+/* =========================================
+   NETTOON TICKER — AUTOMATIC CONTINUOUS SCROLL
+========================================= */
+
 .ticker {
     position: sticky;
     top: var(--header-height, 80px);
     z-index: 100;
     width: 100%;
     overflow: hidden;
+    white-space: nowrap;
+    margin-top: 2rem;
     background: var(--background, #fff);
 }
 
-/* Scrolling country track */
+/* Automatically scroll from right to left */
 .ticker-track {
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
     gap: 2rem;
     width: max-content;
     white-space: nowrap;
-    animation: ticker-scroll 25s linear infinite;
-      background: #121212;
+    background: #121212;
+
+    animation: ticker-scroll 90s linear infinite;
+    animation-play-state: running;
+    will-change: transform;
 }
 
+/* Country names and separators */
 .ticker-track .country {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
+    color: #fff;
+    background: #121212;
 }
 
 .ticker-track .country img {
@@ -3209,24 +3091,17 @@ html[data-theme="dark"] .hero.section-shell {
 }
 
 .ticker-track b {
-    flex-shrink: 0;
-}
-
-.ticker-track .country {
-
-    background: #121212;
-    color: white;
-
-}
-
-.ticker-track .country span {
     display: inline-block;
-    background: #121212;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
+    flex-shrink: 0;
+    color: #ffd629;
 }
 
+/* Slow down the country ticker */
+.ticker-track {
+    animation-duration: 150s !important;
+}
+
+/* Continuous right-to-left movement */
 @keyframes ticker-scroll {
     from {
         transform: translateX(0);
@@ -3237,17 +3112,407 @@ html[data-theme="dark"] .hero.section-shell {
     }
 }
 
-/* Main heading — red in both modes */
-.hero-copy h1 {
-    color: #FF0000;
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+        animation: none;
+        transform: none;
+    }
 }
 
-/* Light mode — black emphasized text */
-html[data-theme="light"] .hero-copy h1 em {
+/* Platform cards: full-width vertical layout on mobile */
+@media (max-width: 760px) {
+    .platform-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 24px;
+    }
+
+    .platform-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .platform-card .card-photo {
+        width: 100%;
+    }
+
+    .platform-card .card-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 760px) {
+    .section-ink > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        box-sizing: border-box;
+    }
+}
+
+
+/* =========================================================
+   NETTOON — UNIFIED MAJOR SECTION BACKGROUNDS
+   Match the header/footer background in both themes.
+   ========================================================= */
+
+
+
+/* =====================================================
+   NETTOON — DARK MODE BACKGROUND COLOUR SWAP
+   Header/footer exchange backgrounds with content sections.
+   Light mode remains unchanged.
+   ===================================================== */
+
+/* Main content sections take the header/footer background */
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .section-light,
+html[data-theme="dark"] .section-paper,
+html[data-theme="dark"] .section-ink,
+html[data-theme="dark"] .section-terracotta,
+html[data-theme="dark"] .about-hero,
+html[data-theme="dark"] .subpage-hero,
+html[data-theme="dark"] .editorial-photo-section,
+html[data-theme="dark"] .about-company,
+html[data-theme="dark"] .team-section,
+html[data-theme="dark"] .principles-section,
+html[data-theme="dark"] .roadmap-section {
+    background-color: #090909;
+}
+
+/* Header and footer take the main content background */
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .site-footer {
+    background-color: #111110;
+}
+
+
+/* NETTOON — Footer bottom visibility in dark mode */
+html[data-theme="dark"] .site-footer .footer-bottom {
+    color: #f9f7ef;
+}
+
+html[data-theme="dark"] .site-footer .footer-bottom span {
+    color: #f9f7ef;
+}
+
+html[data-theme="dark"] .site-footer .footer-bottom a {
+    color: #ffd600;
+}
+
+html[data-theme="dark"] .site-footer .footer-bottom a:hover {
+    color: #ffffff;
+}
+
+/* Remove vertical separators between platform cards */
+.platform-grid .platform-card {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Remove separator lines created by pseudo-elements */
+.platform-grid .platform-card::before,
+.platform-grid .platform-card::after {
+    display: none !important;
+}
+
+/* Remove the separator between the creator hero and editorial section */
+.subpage-hero,
+.editorial-photo-section {
+    border-bottom: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+}
+
+.subpage-hero + .editorial-photo-section {
+    margin-top: 0 !important;
+}
+
+
+/* =====================================================
+   NETTOON — RESTORE LIGHT-MODE BACKGROUNDS
+   For the company and platform-features section only
+   ===================================================== */
+
+html[data-theme="light"] .section.section-ink:has(.about-company) {
+    background-color: var(--paper, #f7f5f2) !important;
+    color: #090909 !important;
+}
+
+html[data-theme="light"] .section.section-ink:has(.about-company) .about-company,
+html[data-theme="light"] .section.section-ink:has(.about-company) .about-company-grid,
+html[data-theme="light"] .section.section-ink:has(.about-company) .platform-grid,
+html[data-theme="light"] .section.section-ink:has(.about-company) .platform-card {
+    background-color: var(--paper, #f7f5f2) !important;
+    color: #090909 !important;
+}
+
+/* Restore readable text in light mode */
+html[data-theme="light"] .section.section-ink:has(.about-company) .eyebrow,
+html[data-theme="light"] .section.section-ink:has(.about-company) h2,
+html[data-theme="light"] .section.section-ink:has(.about-company) h3,
+html[data-theme="light"] .section.section-ink:has(.about-company) p {
+    color: #090909 !important;
+}
+
+/* Preserve the existing brand accents */
+html[data-theme="light"] .section.section-ink:has(.about-company) .eyebrow-line {
+    background-color: var(--brand-red);
+}
+
+html[data-theme="light"] .section.section-ink:has(.about-company) .card-number,
+html[data-theme="light"] .section.section-ink:has(.about-company) .card-tag {
+    color: var(--brand-red);
+}
+
+/* NETTOON — Match roots section to the page background in both modes */
+
+html[data-theme="light"] .section.section-terracotta,
+html[data-theme="light"] .section.section-terracotta .roots-layout,
+html[data-theme="light"] .section.section-terracotta .roots-copy,
+html[data-theme="light"] .section.section-terracotta .roots-art {
+    background-color: var(--paper, #f7f5f2) !important;
+    color: #090909;
+}
+
+/* Dark mode — match the main page section background */
+html[data-theme="dark"] .section.section-terracotta,
+html[data-theme="dark"] .section.section-terracotta .roots-layout,
+html[data-theme="dark"] .section.section-terracotta .roots-copy,
+html[data-theme="dark"] .section.section-terracotta .roots-art {
+    background-color: #090909 !important;
+    color: #f9f7ef;
+}
+
+/* Keep headings and paragraph text readable */
+html[data-theme="light"] .section.section-terracotta h2,
+html[data-theme="light"] .section.section-terracotta p {
+    color: #090909;
+}
+
+html[data-theme="dark"] .section.section-terracotta h2,
+html[data-theme="dark"] .section.section-terracotta p {
+    color: #f9f7ef;
+}
+
+/* Preserve NETTOON's yellow emphasis in both modes */
+.section.section-terracotta .roots-copy h2 em {
+    color: var(--brand-yellow, #ffd600);
+}
+
+/* Remove red border from the main Roots section */
+html[data-theme="light"] .section.section-terracotta,
+html[data-theme="dark"] .section.section-terracotta {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove borders from pseudo-elements that may create red lines */
+html[data-theme="light"] .section.section-terracotta::before,
+html[data-theme="light"] .section.section-terracotta::after,
+html[data-theme="dark"] .section.section-terracotta::before,
+html[data-theme="dark"] .section.section-terracotta::after {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.about-company .large-copy {
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: inherit;
+    letter-spacing: normal;
+}
+
+/* Reduce top spacing above the Team section */
+.team-section {
+    margin-top: 0 !important;
+    padding-top: 40px !important;
+}
+
+/* Reduce top spacing of the entire Key Features section */
+.section.section-ink:has(.about-company) {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+}
+
+/* NETTOON — Match platform cards to the main section background */
+html[data-theme="dark"] .platform-grid .platform-card,
+html[data-theme="dark"] .platform-grid .platform-card > div,
+html[data-theme="dark"] .platform-grid .platform-card > h3,
+html[data-theme="dark"] .platform-grid .platform-card > p,
+html[data-theme="dark"] .platform-grid .platform-card > .card-tag {
+    background-color: #090909 !important;
+}
+
+/* Keep the card text readable */
+html[data-theme="dark"] .platform-grid .platform-card {
+    color: #f9f7ef;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* NETTOON — Match platform cards and gaps to the main background */
+html[data-theme="dark"] .platform-grid {
+    background-color: #090909 !important;
+    column-gap: 0 !important;
+    row-gap: 0 !important;
+}
+
+html[data-theme="dark"] .platform-grid .platform-card {
+    background-color: #090909 !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove separators that may be drawn between cards */
+html[data-theme="dark"] .platform-grid .platform-card::before,
+html[data-theme="dark"] .platform-grid .platform-card::after {
+    background-color: #090909 !important;
+    border-color: #090909 !important;
+    box-shadow: none !important;
+}
+
+/* LIGHT MODE ONLY — The Global Roadmap section */
+html[data-theme="light"] .section-terracotta .roots-copy h2 {
+    color: #ff0000;
+}
+
+html[data-theme="light"] .section-terracotta .roots-copy h2 em {
     color: #000000;
 }
 
-/* Dark mode — yellow emphasized text */
-html[data-theme="dark"] .hero-copy h1 em {
-    color: #FFFF00;
+/* OUR BUSINESS MODEL — red in both light and dark modes */
+.about-company h2 {
+    color: var(--brand-red, #e3262e);
 }
+
+/* EXECUTIVE SUMMARY — black in light mode */
+.about-company h2 em {
+    color: #000000;
+}
+
+/* EXECUTIVE SUMMARY — yellow in dark mode */
+html[data-theme="dark"] .about-company h2 em {
+    color: var(--brand-yellow, #ffd629);
+}
+
+/* THE NETTOON — red in both light and dark modes */
+.creator-copy h2 {
+    color: var(--brand-red, #e3262e);
+}
+
+/* ECOSYSTEM — black in light mode */
+.creator-copy h2 em {
+    color: #000000;
+}
+
+/* ECOSYSTEM — yellow in dark mode */
+html[data-theme="dark"] .creator-copy h2 em {
+    color: var(--brand-yellow, #ffd629);
+}
+
+/* THE GLOBAL ROADMAP — force red in both light and dark modes */
+.roots-copy h2,
+html[data-theme="dark"] .roots-copy h2 {
+    color: #e3262e !important;
+}
+
+/* FROM VISION TO GLOBAL MOVEMENT — black in light mode */
+.roots-copy h2 em {
+    color: #000000 !important;
+}
+
+/* FROM VISION TO GLOBAL MOVEMENT — yellow in dark mode */
+html[data-theme="dark"] .roots-copy h2 em {
+    color: #ffd629 !important;
+}
+
+/* =========================================
+   ABOUT COMPANY — BUSINESS MODEL
+   ========================================= */
+
+/* OUR BUSINESS MODEL — red in both themes */
+section.about-company .about-company-grid h2 {
+    color: #e3262e !important;
+}
+
+/* EXECUTIVE SUMMARY — black in light mode */
+section.about-company .about-company-grid h2 em {
+    color: #000000 !important;
+}
+
+/* EXECUTIVE SUMMARY — yellow in dark mode */
+html[data-theme="dark"] section.about-company .about-company-grid h2 em {
+    color: #ffd629 !important;
+}
+
+
+/* =========================================
+   CREATOR OPPORTUNITY — NETTOON ECOSYSTEM
+   ========================================= */
+
+/* THE NETTOON — red in both themes */
+section.section .creator-copy h2 {
+    color: #e3262e !important;
+}
+
+/* ECOSYSTEM — black in light mode */
+section.section .creator-copy h2 em {
+    color: #000000 !important;
+}
+
+/* ECOSYSTEM — yellow in dark mode */
+html[data-theme="dark"] section.section .creator-copy h2 em {
+    color: #ffd629 !important;
+}
+
+
+/* =========================================
+   GLOBAL ROADMAP
+   ========================================= */
+
+/* THE GLOBAL ROADMAP — red in both themes */
+section.section-terracotta .roots-copy h2 {
+    color: #e3262e !important;
+}
+
+/* FROM VISION TO GLOBAL MOVEMENT — black in light mode */
+section.section-terracotta .roots-copy h2 em {
+    color: #000000 !important;
+}
+
+/* FROM VISION TO GLOBAL MOVEMENT — yellow in dark mode */
+html[data-theme="dark"] section.section-terracotta .roots-copy h2 em {
+    color: #ffd629 !important;
+}
+
+
+/* THE GLOBAL ROADMAP — red in both light and dark modes */
+section.editorial-photo-section .editorial-photo-copy h1 {
+    color: #e3262e !important;
+}
+
+/* FROM VISION TO GLOBAL MOVEMENT — black in light mode */
+section.editorial-photo-section .editorial-photo-copy h1 em {
+    color: #000000 !important;
+}
+
+/* FROM VISION TO GLOBAL MOVEMENT — yellow in dark mode */
+html[data-theme="dark"] section.editorial-photo-section .editorial-photo-copy h1 em {
+    color: #ffd629 !important;
+}
+
