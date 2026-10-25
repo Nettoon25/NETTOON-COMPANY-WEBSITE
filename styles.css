@@ -3516,3 +3516,46 @@ html[data-theme="dark"] section.editorial-photo-section .editorial-photo-copy h1
     color: #ffd629 !important;
 }
 
+
+/* =========================================
+   MOBILE NAVIGATION — HEADER ACTIONS
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Make the navigation a dropdown panel */
+    .nav-wrap {
+        position: relative;
+    }
+
+    .primary-nav {
+        display: none;
+    }
+
+    .primary-nav.is-open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Keep theme and contact actions inside the menu */
+    .nav-actions {
+        display: none;
+    }
+
+    .primary-nav.is-open + .nav-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+        padding: 16px 0;
+    }
+
+    .nav-actions .theme-toggle,
+    .nav-actions .nav-cta {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+}
