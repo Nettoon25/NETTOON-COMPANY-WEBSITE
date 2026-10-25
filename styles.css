@@ -3120,6 +3120,40 @@ html[data-theme="light"] .hero.section-shell::after {
     }
 }
 
+
+/* MOBILE — reduce top spacing and keep ticker moving */
+@media (max-width: 768px) {
+
+    .ticker {
+        margin-top: 0.75rem;
+        position: relative;
+        top: auto;
+    }
+
+    .ticker-track {
+        animation: ticker-scroll 150s linear infinite !important;
+        animation-play-state: running !important;
+    }
+
+}
+
+/* Never pause the ticker on hover */
+.ticker:hover .ticker-track {
+    animation-play-state: running !important;
+}
+
+/* Continuous right-to-left movement */
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
 /* Platform cards: full-width vertical layout on mobile */
 @media (max-width: 760px) {
     .platform-grid {
@@ -3557,5 +3591,41 @@ html[data-theme="dark"] section.editorial-photo-section .editorial-photo-copy h1
         width: 100%;
         justify-content: center;
         box-sizing: border-box;
+    }
+}
+
+
+/* MOBILE HAMBURGER ICON — visible in both themes */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1001;
+    }
+
+    /* The two lines forming the menu icon */
+    .menu-toggle span {
+        display: block !important;
+        width: 24px;
+        height: 2px;
+        border-radius: 2px;
+        background-color: #171717 !important;
+        transition: background-color 0.2s ease;
+    }
+
+    /* Dark mode — white lines */
+    html[data-theme="dark"] .menu-toggle span {
+        background-color: #ffffff !important;
     }
 }
