@@ -21,51 +21,73 @@
 </head>
 
 <body>
+   
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="top">
+    <div class="container nav-wrap">
 
-    <header class="site-header" id="top">
+        <!-- NETTOON logo -->
+        <a class="brand" href="index.html" aria-label="Nettoon home">
+            <span class="brand-word">
+                <span class="brand-net">NET</span><span class="brand-toon">TOON</span>
+            </span>
+        </a>
 
-        <div class="container nav-wrap">
+        <!-- Hamburger: stays at the top-right -->
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-<a class="brand" href="index.html" aria-label="Nettoon home">
-    <span class="brand-word">
-        <span class="brand-net">NET</span><span class="brand-toon">TOON</span>
-    </span>
-</a>
-
-
-            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
-                <span></span>
-                <span></span>
-            </button>
-
-            <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-                <a href="about.html">About us</a>
-                <a href="vision.html">Our vision</a>
-                <a href="platform.html">The platform</a>
-                <a href="creators.html">For creators</a>
-                <a href="roots.html">Our roots</a>
-                <a href="principles.html">Principles</a>
-                <a href="roadmap.html">Roadmap</a>
-            </nav>
+        <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+            <a href="about.html">About us</a>
+            <a href="vision.html">Our vision</a>
+            <a href="platform.html">The platform</a>
+            <a href="creators.html">For creators</a>
+            <a href="roots.html">Our roots</a>
+            <a href="principles.html">Principles</a>
+            <a href="roadmap.html">Roadmap</a>
 
             <div class="nav-actions">
 
-                <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
-                    <span class="theme-icon" aria-hidden="true">◐</span>
-                    <span class="theme-label">Dark mode</span>
-                </button>
-
+                <!-- Contact link -->
                 <a class="nav-cta" href="contact.html">
-                    Connect with us <span aria-hidden="true">↗</span>
+                    Connect with us
+                    <span aria-hidden="true">↗</span>
                 </a>
 
+                <!-- Theme toggle at the bottom -->
+                <button
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Switch to dark mode"
+                    title="Switch theme"
+                >
+                    <img
+                        class="theme-toggle-icon"
+                        src="theme.png"
+                        alt=""
+                        width="20"
+                        height="20"
+                    >
+      
+                </button>
+
             </div>
+        </nav>
 
-        </div>
+    </div>
+</header>
 
-    </header>
 
     <main id="main" class="subpage-main">
 
@@ -111,9 +133,9 @@
 
                 <figure class="editorial-photo">
 
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85" alt="Creative team collaborating" loading="lazy">
+                    <img src="img.png" alt="Creative team collaborating" loading="lazy">
 
-                    <figcaption>Creative team collaborating</figcaption>
+                    <figcaption style="display: none;">Creative team collaborating</figcaption>
 
                 </figure>
 
