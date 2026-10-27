@@ -3551,256 +3551,211 @@ html[data-theme="dark"] section.editorial-photo-section .editorial-photo-copy h1
 }
 
 /* =========================================
-   MOBILE NAVIGATION — FULL-WIDTH DROPDOWN
-   Fixed top-right close button
+   NETTOON — MOBILE NAVIGATION
+   Expands in document flow; page remains accessible
 ========================================= */
 
 @media (max-width: 768px) {
 
-    /* Keep the header as the positioning reference */
     .site-header {
         position: sticky;
         top: 0;
         z-index: 2000;
+        overflow: visible;
     }
 
     .nav-wrap {
         position: relative;
+        display: flex;
+        flex-wrap: wrap;
         width: 100%;
-        box-sizing: border-box;
+        min-height: 70px;
+        gap: 0;
     }
 
-    /* FULL-WIDTH NAVIGATION PANEL */
+    /* Hamburger button */
+    .nav-wrap .menu-toggle {
+        display: flex !important;
+        position: relative;
+        flex: 0 0 44px;
+        width: 44px;
+        height: 44px;
+        margin-left: auto;
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        order: 2;
+
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 9px;
+        cursor: pointer;
+        z-index: 2002;
+    }
+
+    /* Three visible hamburger lines */
+    .nav-wrap .menu-toggle span {
+        display: block !important;
+        width: 20px;
+        height: 2px;
+        flex: 0 0 2px;
+        background: #171717 !important;
+        border-radius: 2px;
+        opacity: 1;
+        transform: none;
+        transition: transform .2s ease, opacity .2s ease;
+    }
+
+    /* Turn the hamburger into an X */
+    .nav-wrap .menu-toggle[aria-expanded="true"] {
+        gap: 0;
+    }
+
+    .nav-wrap .menu-toggle[aria-expanded="true"] span:first-child {
+        transform: translateY(2px) rotate(45deg);
+    }
+
+    .nav-wrap .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-wrap .menu-toggle[aria-expanded="true"] span:last-child {
+        transform: translateY(-2px) rotate(-45deg);
+    }
+
+    /* Navigation closed by default */
     .nav-wrap .primary-nav,
     .nav-wrap .primary-nav.is-open {
         display: none;
-        position: fixed;
-
-        top: 70px;
-        left: 0;
-        right: 0;
-        transform: none;
-
+        position: static;
+        flex: 0 0 100%;
         width: 100%;
         max-width: 100%;
-        height: calc(100dvh - 70px);
-        max-height: calc(100dvh - 70px);
+        height: auto;
+        max-height: none;
+        min-width: 0;
 
+        padding: 8px 0 18px;
         margin: 0;
-        padding: 12px 20px 30px;
-        box-sizing: border-box;
+        transform: none;
 
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;
         gap: 0;
 
-        overflow-y: auto;
-        overflow-x: hidden;
-
+        overflow: visible;
+        box-sizing: border-box;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, .12);
         background: #f7f5f2;
-        border: none;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-
-        z-index: 2001;
     }
 
-    /* Show the panel only when the menu is open */
+    /* Open menu pushes page content down instead of covering it */
     .nav-wrap .primary-nav.is-open {
         display: flex;
     }
 
-    /* Every navigation link fills the panel width */
     .nav-wrap .primary-nav > a {
         display: flex;
         align-items: center;
-
         width: 100%;
-        min-height: 58px;
-        padding: 16px 12px;
+        min-height: 52px;
+        padding: 14px 12px;
         margin: 0;
 
         box-sizing: border-box;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-
-        text-align: left;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        color: #171717;
         font-size: 14px;
     }
 
-    /* Keep the close button at the top-right */
-    .nav-wrap .menu-toggle,
-    .nav-wrap:has(.primary-nav.is-open) .menu-toggle {
-        display: flex !important;
-        position: fixed !important;
-
-        top: 13px !important;
-        right: 18px !important;
-        bottom: auto !important;
-        left: auto !important;
-
-        transform: none !important;
-
-        width: 44px;
-        height: 44px;
-        margin: 0;
-        padding: 10px;
-
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-
-        background: transparent;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 9px;
-
-        z-index: 2010;
-    }
-
-    /* Hamburger lines / X icon */
-    .nav-wrap .menu-toggle span {
-        display: block !important;
-        width: 23px;
-        height: 2px;
-        flex-shrink: 0;
-
-        background: #171717 !important;
-        border-radius: 2px;
-        transform-origin: center;
-    }
-
-    /* Form the X when expanded */
-    .nav-wrap .menu-toggle[aria-expanded="true"] {
-        gap: 0;
-    }
-
-    .nav-wrap .menu-toggle[aria-expanded="true"] span:first-child {
-        transform: translateY(1px) rotate(45deg) !important;
-    }
-
-    .nav-wrap .menu-toggle[aria-expanded="true"] span:last-child {
-        transform: translateY(-1px) rotate(-45deg) !important;
-    }
-
-    /* Hide the middle line if your button has three spans */
-    .nav-wrap .menu-toggle[aria-expanded="true"] span:nth-child(2) {
-        display: none !important;
-    }
-
-    /* Actions inside the navigation panel */
+    /* Theme toggle and contact link */
     .nav-wrap .primary-nav.is-open .nav-actions {
         display: flex !important;
-        position: static !important;
-
+        position: static;
         width: 100%;
-        padding: 18px 0 0;
+        padding: 16px 0 0;
         margin: 0;
 
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
-
         box-sizing: border-box;
         background: transparent;
-        border: none;
+        border: 0;
     }
 
     .nav-wrap .primary-nav.is-open .theme-toggle,
     .nav-wrap .primary-nav.is-open .nav-cta {
         display: flex;
-        width: 100%;
-        min-height: 48px;
-        box-sizing: border-box;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
+        min-height: 48px;
+        margin: 0;
+        padding: 12px;
+        box-sizing: border-box;
     }
 
-    /* Light theme */
+    /* Light mode */
     html[data-theme="light"] .nav-wrap .primary-nav.is-open {
         background: #f7f5f2;
     }
 
     html[data-theme="light"] .nav-wrap .primary-nav.is-open > a {
         color: #171717;
-        border-bottom-color: rgba(0, 0, 0, 0.12);
+        border-bottom-color: rgba(0, 0, 0, .12);
     }
 
-    /* Dark theme */
+    html[data-theme="light"] .nav-wrap .menu-toggle {
+        border-color: rgba(0, 0, 0, .25);
+        background: transparent;
+    }
+
+    html[data-theme="light"] .nav-wrap .menu-toggle span {
+        background: #171717 !important;
+    }
+
+    /* Dark mode */
     html[data-theme="dark"] .nav-wrap .primary-nav,
     html[data-theme="dark"] .nav-wrap .primary-nav.is-open {
         background: #090909;
-        border-top-color: rgba(255, 255, 255, 0.15);
+        border-top-color: rgba(255, 255, 255, .16);
     }
 
     html[data-theme="dark"] .nav-wrap .primary-nav.is-open > a {
         color: #f9f7ef;
-        border-bottom-color: rgba(255, 255, 255, 0.16);
+        border-bottom-color: rgba(255, 255, 255, .16);
     }
 
-    html[data-theme="dark"] .nav-wrap .menu-toggle,
-    html[data-theme="dark"] .nav-wrap:has(.primary-nav.is-open) .menu-toggle {
+    html[data-theme="dark"] .nav-wrap .menu-toggle {
+        border-color: rgba(255, 255, 255, .25);
         background: #090909;
-        border-color: rgba(255, 255, 255, 0.25);
     }
 
     html[data-theme="dark"] .nav-wrap .menu-toggle span {
         background: #ffffff !important;
     }
-
-    /* Prevent background scrolling while the menu is open */
-    body.menu-open {
-        overflow: hidden;
-    }
 }
 
-/* =========================================
-   MOBILE MENU TOGGLE ICON
-========================================= */
-
-.menu-toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border: none;
-    border-radius: 10px;
-    background: transparent;
-    color: var(--text-color, #111);
-    cursor: pointer;
-    transition: background-color 0.25s ease,
-                color 0.25s ease;
-}
-
-.menu-toggle:hover {
-    background: rgba(128, 128, 128, 0.12);
-}
-
-.menu-toggle .menu-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 23px;
-    line-height: 1;
-    transition: transform 0.25s ease;
-}
-
-/* Show the button on mobile */
-@media (max-width: 768px) {
+/* Desktop: JavaScript-controlled mobile button stays hidden */
+@media (min-width: 769px) {
     .menu-toggle {
-        display: inline-flex;
+        display: none !important;
+    }
+
+    .primary-nav {
+        display: flex;
+        position: static;
+        height: auto;
+        max-height: none;
+        overflow: visible;
     }
 }
 
-/* Dark theme */
-html[data-theme="dark"] .menu-toggle {
-    color: #fff;
-}
-
-/* Light theme */
-html[data-theme="light"] .menu-toggle {
-    color: #111;
-}
 
 /* STAR IMAGE BETWEEN COUNTRIES */
 .ticker-track .ticker-star {
@@ -3831,3 +3786,235 @@ html[data-theme="light"] .hero-copy h1 em,
 html[data-theme="dark"] .hero-copy h1 em {
     color: #ffff00 !important;
 }
+
+
+
+/* =========================================
+   NETTOON — MOBILE HEADER AND NAVIGATION
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Keep the header and its contents properly spaced */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 2000;
+        overflow: visible;
+    }
+
+    .site-header .nav-wrap {
+        position: relative;
+        width: calc(100% - 32px);
+        max-width: var(--container);
+        min-height: 70px;
+        margin-inline: auto;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        box-sizing: border-box;
+    }
+
+    /* Keep the logo at the left with breathing room */
+    .site-header .brand {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        flex: 0 1 auto;
+        min-width: 0;
+        margin: 0;
+        padding: 8px 0;
+        z-index: 2002;
+    }
+
+    .site-header .brand-word {
+        font-size: clamp(19px, 5.5vw, 23px);
+        white-space: nowrap;
+    }
+
+    /* Hamburger stays in the top-right corner */
+    .site-header .menu-toggle {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+
+        display: flex !important;
+        flex: 0 0 44px;
+        width: 44px;
+        height: 44px;
+        margin: 0 0 0 auto;
+        padding: 10px;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 9px;
+        color: inherit;
+        cursor: pointer;
+        z-index: 2003;
+    }
+
+    /* Three visible hamburger lines */
+    .site-header .menu-toggle span {
+        display: block !important;
+        width: 20px;
+        height: 2px;
+        flex: 0 0 2px;
+        margin: 0;
+        background: #171717 !important;
+        border-radius: 2px;
+        opacity: 1;
+        transform: none;
+        transition: transform .2s ease, opacity .2s ease;
+    }
+
+    /* Animate hamburger into X */
+    .site-header .menu-toggle[aria-expanded="true"] {
+        gap: 0;
+    }
+
+    .site-header .menu-toggle[aria-expanded="true"] span:first-child {
+        transform: translateY(2px) rotate(45deg);
+    }
+
+    .site-header .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .site-header .menu-toggle[aria-expanded="true"] span:last-child {
+        transform: translateY(-2px) rotate(-45deg);
+    }
+
+    /* Dropdown sits below the header */
+    .site-header .primary-nav,
+    .site-header .primary-nav.is-open {
+        position: absolute !important;
+        top: 100%;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) !important;
+
+        display: none;
+        width: 100vw;
+        max-width: 100vw;
+        height: auto;
+        max-height: calc(100dvh - 70px);
+        margin: 0;
+
+        padding: 8px 20px 24px;
+        box-sizing: border-box;
+
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        background: #f7f5f2;
+        border-top: 1px solid rgba(0, 0, 0, .12);
+        z-index: 2001;
+    }
+
+    .site-header .primary-nav.is-open {
+        display: flex;
+    }
+
+    .site-header .primary-nav > a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 52px;
+        padding: 14px 12px;
+        margin: 0;
+        box-sizing: border-box;
+        color: #171717;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        font-size: 14px;
+    }
+
+    /* Theme and contact actions stay inside the dropdown */
+    .site-header .primary-nav.is-open .nav-actions {
+        display: flex !important;
+        position: static !important;
+        width: 100%;
+        margin: 0;
+        padding: 16px 0 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        box-sizing: border-box;
+    }
+
+    .site-header .primary-nav.is-open .nav-actions .theme-toggle,
+    .site-header .primary-nav.is-open .nav-actions .nav-cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 48px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    /* Light theme */
+    html[data-theme="light"] .site-header .menu-toggle span {
+        background: #171717 !important;
+    }
+
+    /* Dark theme */
+    html[data-theme="dark"] .site-header .primary-nav,
+    html[data-theme="dark"] .site-header .primary-nav.is-open {
+        background: #090909;
+        border-top-color: rgba(255, 255, 255, .16);
+    }
+
+    html[data-theme="dark"] .site-header .primary-nav.is-open > a {
+        color: #f9f7ef;
+        border-bottom-color: rgba(255, 255, 255, .16);
+    }
+
+    html[data-theme="dark"] .site-header .menu-toggle {
+        border-color: rgba(255, 255, 255, .25);
+    }
+
+    html[data-theme="dark"] .site-header .menu-toggle span {
+        background: #ffffff !important;
+    }
+
+    /* Do not lock page scrolling when the menu opens */
+    body.menu-open {
+        overflow: auto !important;
+    }
+}
+
+
+/* Theme toggle icon */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle .theme-toggle-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    object-fit: contain;
+}
+
+    html[data-theme="dark"] .theme-toggle .theme-toggle-icon  {
+  filter: invert(1);
+    }

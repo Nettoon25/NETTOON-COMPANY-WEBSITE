@@ -22,49 +22,72 @@
 
 <body>
 
-    <a class="skip-link" href="#main">Skip to content</a>
+   
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header" id="top">
+<header class="site-header" id="top">
+    <div class="container nav-wrap">
 
-        <div class="container nav-wrap">
+        <!-- NETTOON logo -->
+        <a class="brand" href="index.html" aria-label="Nettoon home">
+            <span class="brand-word">
+                <span class="brand-net">NET</span><span class="brand-toon">TOON</span>
+            </span>
+        </a>
 
-       <a class="brand" href="index.html" aria-label="Nettoon home">
-    <span class="brand-word">
-        <span class="brand-net">NET</span><span class="brand-toon">TOON</span>
-    </span>
-</a>
+        <!-- Hamburger: stays at the top-right -->
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
-                <span></span>
-                <span></span>
-            </button>
-
-            <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-                <a href="about.html">About us</a>
-                <a href="vision.html">Our vision</a>
-                <a href="platform.html">The platform</a>
-                <a href="creators.html">For creators</a>
-                <a href="roots.html">Our roots</a>
-                <a href="principles.html">Principles</a>
-                <a href="roadmap.html">Roadmap</a>
-            </nav>
+        <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+            <a href="about.html">About us</a>
+            <a href="vision.html">Our vision</a>
+            <a href="platform.html">The platform</a>
+            <a href="creators.html">For creators</a>
+            <a href="roots.html">Our roots</a>
+            <a href="principles.html">Principles</a>
+            <a href="roadmap.html">Roadmap</a>
 
             <div class="nav-actions">
 
-                <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
-                    <span class="theme-icon" aria-hidden="true">◐</span>
+                <!-- Contact link -->
+                <a class="nav-cta" href="contact.html">
+                    Connect with us
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <!-- Theme toggle at the bottom -->
+                <button
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Switch to dark mode"
+                    title="Switch theme"
+                >
+                    <img
+                        class="theme-toggle-icon"
+                        src="theme.png"
+                        alt=""
+                        width="20"
+                        height="20"
+                    >
                     <span class="theme-label">Dark mode</span>
                 </button>
 
-                <a class="nav-cta" href="contact.html">
-                    Connect with us <span aria-hidden="true">↗</span>
-                </a>
-
             </div>
+        </nav>
 
-        </div>
-
-    </header>
+    </div>
+</header>
 
     <main id="main" class="subpage-main">
 

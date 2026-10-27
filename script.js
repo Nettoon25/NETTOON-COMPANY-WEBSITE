@@ -292,10 +292,19 @@ if (ticker) {
             item.append(flag, document.createTextNode(` ${name}`));
             fragment.appendChild(item);
 
-            const separator = document.createElement("b");
-            separator.textContent = "✳";
-            separator.setAttribute("aria-hidden", "true");
-            fragment.appendChild(separator);
+     const separator = document.createElement("span");
+separator.className = "ticker-star";
+separator.setAttribute("aria-hidden", "true");
+
+const star = document.createElement("img");
+star.src = "Kevin's Star.png";
+star.alt = "";
+star.width = 16;
+star.height = 16;
+star.loading = "lazy";
+
+separator.appendChild(star);
+fragment.appendChild(separator);
         });
 
         return fragment;
