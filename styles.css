@@ -3825,3 +3825,9 @@ html[data-theme="light"] .menu-toggle {
 html[data-theme="dark"].ticker-track .ticker-star img  {
    filter:invert(1);
 }
+
+/* HERO — Yellow emphasis in both themes */
+html[data-theme="light"] .hero-copy h1 em,
+html[data-theme="dark"] .hero-copy h1 em {
+    color: #ffff00 !important;
+}
