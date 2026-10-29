@@ -4118,3 +4118,52 @@ html[data-theme="dark"] .creator-visual {
     background: transparent !important;
     background-color: transparent !important;
 }
+
+/* Platform card descriptions — light mode */
+.platform-card p {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 1;
+}
+
+/* Platform card descriptions — dark mode */
+html[data-theme="dark"] .platform-card p {
+    color: #e0e0e0;
+}
+
+/* Light mode */
+.features-heading .features-text {
+      color: #090909; /* Black */
+}
+
+.features-heading .functionality-text {
+    color: #e3262e; /* Red */
+}
+
+/* Dark mode */
+html[data-theme="dark"] .features-heading .features-text {
+    color: #e0e0e0;
+}
+
+html[data-theme="dark"] .features-heading .functionality-text {
+  color: #ffff00 !important;
+}
+
+/* Light mode */
+.editorial-photo-copy .ownership-heading {
+    color: #090909;
+}
+
+.editorial-photo-copy .ownership-heading .ownership-text {
+    color: #e3262e;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .editorial-photo-copy .ownership-heading {
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .editorial-photo-copy .ownership-heading .ownership-text {
+  color: #ffff00 !important;
+}
