@@ -1,36 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
 :root {
-  --ink: #10110f;
-  --ink-soft: #191a17;
-  --paper: #f2efe8;
-  --paper-deep: #e7e1d6;
-  --white: #fbfaf7;
-  --muted: #a7a69e;
-  --muted-dark: #65645d;
-  --clay: #b85f42;
-  --clay-light: #d58a65;
-  --ochre: #d4a95f;
-  --line-dark: rgba(255,255,255,.14);
-  --line-light: rgba(16,17,15,.17);
-  --font-body: "DM Sans",Arial,sans-serif;
-  --font-display: "Manrope",Arial,sans-serif;
-  --container: 1180px;
+  --cream: #F9EEDF;
+  --cream-2: #F3E6D2;
+  --ink: #231E18;
+  --soft: #5A5044;
+  --red: #E0442E;
+  --yellow: #D99A1E;
+  --blue: #2579C4;
+  --maroon: red;
+  --light-blue: #A8CEE3;
+  --white: #fffdf9;
+  --line: rgba(35,30,24,.13);
+  --shadow: 0 24px 60px rgba(57,34,24,.09);
+  --radius: 22px;
 }
+
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 90px;
 }
+
 body {
   margin: 0;
-  background: transparent;
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 16px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Poppins',sans-serif;
+  font-size: 15px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+
 body.menu-open {
   overflow: hidden;
 }
@@ -4166,4 +4170,690 @@ html[data-theme="dark"] .editorial-photo-copy .ownership-heading {
 
 html[data-theme="dark"] .editorial-photo-copy .ownership-heading .ownership-text {
   color: #ffff00 !important;
+}
+
+
+/*
+  NETTOON — SPACING & TYPOGRAPHY NORMALISATION
+  Append this file AFTER the existing styles(7).css stylesheet.
+  It reduces excessive page gutters, section padding, oversized headings
+  and bulky cards while preserving the existing brand colours and layouts.
+*/
+
+/* 1. Global sizing and comfortable reading defaults */
+:root {
+  --container: 1200px;
+  --page-gutter: clamp(20px, 3vw, 36px);
+  --section-space: clamp(56px, 6vw, 76px);
+  --card-radius: 4px;
+}
+
+html {
+  scroll-padding-top: 76px;
+}
+
+body {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.container {
+  width: min(var(--container), calc(100% - (var(--page-gutter) * 2)));
+  margin-inline: auto;
+}
+
+/* 2. Reduce excessive vertical whitespace between sections */
+.section {
+  padding-block: var(--section-space);
+}
+
+.subpage-hero {
+  padding: clamp(48px, 6vw, 76px) 0 36px;
+}
+
+.subpage-main .section {
+  padding-top: 48px;
+}
+
+.about-hero {
+  padding: clamp(48px, 6vw, 76px) 0 48px;
+}
+
+.about-company {
+  padding: 48px 0 56px;
+}
+
+.team-section {
+  padding: 56px 0;
+}
+
+.team-join {
+  padding: 44px 0;
+}
+
+.section-heading {
+  margin-bottom: 34px;
+}
+
+.team-heading {
+  margin-bottom: 28px;
+}
+
+/* 3. Bring headings back to a balanced desktop scale */
+h1 {
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.08;
+  margin-bottom: 18px;
+  max-width: 720px;
+}
+
+h2 {
+  font-size: clamp(30px, 3.5vw, 48px);
+  line-height: 1.14;
+  margin-bottom: 18px;
+}
+
+.large-copy {
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.6;
+}
+
+.hero-lede,
+.subpage-hero .hero-lede,
+.about-hero-copy,
+.subpage-intro {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  font-size: 10px;
+}
+
+.heading-aside,
+.roadmap-intro {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 4. Tighten major grid gaps */
+.split-layout,
+.creator-layout,
+.roots-layout,
+.roadmap-layout,
+.connect-layout {
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.editorial-photo-layout {
+  gap: clamp(28px, 4vw, 48px);
+}
+
+.about-company-grid {
+  gap: clamp(28px, 4vw, 44px);
+}
+
+.platform-grid {
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+/* 5. Reduce card dimensions and internal padding */
+.platform-card {
+  min-height: 320px;
+  padding: 22px 18px 20px;
+}
+
+.platform-card h3 {
+  font-size: 18px;
+  line-height: 1.3;
+  margin-bottom: 9px;
+}
+
+.platform-card p {
+  font-size: 13px;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.card-graphic {
+  height: 112px;
+  margin: 12px 0 17px;
+}
+
+.card-photo {
+  height: 130px;
+  margin: 12px 0 16px;
+}
+
+.subpage-cards {
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.subpage-card {
+  min-height: 150px;
+  padding: 20px;
+}
+
+.subpage-card span {
+  margin-bottom: 14px;
+}
+
+.subpage-card h3 {
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.subpage-card p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.team-grid {
+  gap: 16px;
+}
+
+.team-card img {
+  height: 240px;
+  object-fit: cover;
+}
+
+.team-card-body {
+  padding: 17px 17px 19px;
+}
+
+.team-card h3 {
+  font-size: 19px;
+}
+
+.team-card p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.principle {
+  padding: 22px 18px 22px 0;
+}
+
+.principle h3 {
+  font-size: 17px;
+  margin: 22px 0 9px;
+}
+
+.principle p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* 6. Make controls and navigation more proportionate */
+.nav-wrap {
+  min-height: 72px;
+  gap: 24px;
+}
+
+.primary-nav {
+  gap: clamp(14px, 1.8vw, 26px);
+}
+
+.primary-nav a {
+  font-size: 13px;
+}
+
+.nav-cta,
+.theme-toggle {
+  min-height: 38px;
+  padding: 8px 11px;
+  font-size: 12px;
+}
+
+.button {
+  min-height: 44px;
+  padding: 11px 16px;
+  gap: 14px;
+  font-size: 12px;
+}
+
+.text-link,
+.underlined-link {
+  font-size: 12px;
+}
+
+.connect-panel {
+  padding: 22px;
+}
+
+.contact-email {
+  font-size: clamp(17px, 1.7vw, 22px);
+}
+
+.check-list {
+  margin: 22px 0 24px;
+}
+
+.check-list li {
+  padding: 10px 0;
+  font-size: 13px;
+}
+
+/* 7. Reduce oversized decorative objects without distorting content images */
+.hero-art {
+  min-height: 420px;
+}
+
+.art-card {
+  width: 158px;
+  height: 172px;
+  padding: 11px;
+}
+
+.art-core {
+  width: 104px;
+  height: 104px;
+}
+
+.creator-stamp {
+  width: 112px;
+  height: 112px;
+}
+
+.creator-stamp b {
+  font-size: 30px;
+}
+
+.roots-sun {
+  width: 190px;
+  height: 190px;
+}
+
+.platform-photo-strip {
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.strip-photo {
+  height: 180px;
+}
+
+/* 8. Keep the fixed-height hero from feeling excessively tall */
+.hero.section-shell {
+  height: clamp(520px, 70vh, 660px);
+}
+
+.hero.section-shell .hero-layout {
+  padding-block: 32px;
+  gap: 22px;
+}
+
+/* 9. Footer spacing and typography */
+.site-footer {
+  padding: 48px 0 18px;
+}
+
+.footer-main {
+  gap: 32px;
+  padding-bottom: 38px;
+}
+
+.footer-note p {
+  font-size: 16px;
+}
+
+.footer-bottom {
+  padding-top: 14px;
+  font-size: 11px;
+}
+
+/* 10. Tablet adjustments */
+@media (max-width: 1000px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  .split-layout,
+  .creator-layout,
+  .roots-layout,
+  .roadmap-layout,
+  .connect-layout {
+    gap: 32px;
+  }
+
+  .platform-card {
+    min-height: 300px;
+    padding: 20px 16px;
+  }
+
+  .team-card img {
+    height: 210px;
+  }
+
+  .hero.section-shell {
+    height: 600px;
+  }
+}
+
+/* 11. Mobile: compact but not cramped */
+@media (max-width: 760px) {
+  :root {
+    --page-gutter: 18px;
+    --section-space: 48px;
+  }
+
+  .container {
+    width: calc(100% - 36px);
+  }
+
+  .section {
+    padding-block: 48px;
+  }
+
+  .subpage-hero {
+    padding: 42px 0 28px;
+  }
+
+  .subpage-main .section {
+    padding-top: 36px;
+  }
+
+  .about-hero,
+  .about-company {
+    padding-block: 42px;
+  }
+
+  .team-section {
+    padding: 48px 0;
+  }
+
+  .team-join {
+    padding: 38px 0;
+  }
+
+  h1 {
+    font-size: clamp(34px, 9vw, 48px);
+    line-height: 1.08;
+  }
+
+  h2 {
+    font-size: clamp(28px, 7vw, 38px);
+    line-height: 1.15;
+  }
+
+  .large-copy {
+    font-size: 16px;
+  }
+
+  .hero-layout {
+    padding-block: 54px 40px;
+  }
+
+  .hero.section-shell {
+    height: auto;
+    min-height: 0;
+  }
+
+  .hero.section-shell .hero-layout {
+    min-height: 0;
+    height: auto;
+    padding: 76px 0 38px;
+    gap: 18px;
+  }
+
+  .hero-art {
+    min-height: 340px;
+    transform: scale(.86);
+    transform-origin: top center;
+    margin-bottom: -42px;
+  }
+
+  .split-layout,
+  .creator-layout,
+  .roots-layout,
+  .roadmap-layout,
+  .connect-layout,
+  .about-hero .about-hero-grid,
+  .about-company-grid,
+  .editorial-photo-layout {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .section-heading {
+    margin-bottom: 26px;
+  }
+
+  .section-heading-row {
+    gap: 18px;
+  }
+
+  .platform-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .platform-card {
+    min-height: 0;
+    padding: 16px 14px;
+  }
+
+  .platform-card h3 {
+    font-size: 16px;
+  }
+
+  .platform-card p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .card-graphic {
+    height: 96px;
+    margin: 10px 0 14px;
+  }
+
+  .card-photo {
+    height: 105px;
+    margin: 10px 0 14px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .team-card img {
+    height: 190px;
+  }
+
+  .team-card-body {
+    padding: 14px;
+  }
+
+  .team-card h3 {
+    font-size: 17px;
+  }
+
+  .team-card p {
+    font-size: 12px;
+  }
+
+  .principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .principle {
+    min-height: 0;
+    padding: 18px 14px 18px 0;
+    margin-right: 14px;
+  }
+
+  .principle h3 {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
+  .subpage-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .subpage-card {
+    padding: 16px;
+    min-height: 0;
+  }
+
+  .editorial-photo {
+    height: auto;
+  }
+
+  .editorial-photo img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .connect-panel {
+    padding: 18px;
+  }
+
+  .footer-main {
+    gap: 24px;
+    padding-bottom: 30px;
+  }
+
+  .footer-bottom {
+    gap: 10px;
+  }
+}
+
+/* 12. Small phones */
+@media (max-width: 480px) {
+  :root {
+    --page-gutter: 14px;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .section {
+    padding-block: 40px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 10vw, 42px);
+  }
+
+  h2 {
+    font-size: clamp(26px, 8vw, 34px);
+  }
+
+  .platform-grid,
+  .team-grid,
+  .subpage-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-card {
+    padding: 18px;
+  }
+
+  .platform-card .card-photo {
+    height: 150px;
+  }
+
+  .team-card img {
+    height: 240px;
+  }
+
+  .principle {
+    padding-right: 10px;
+    margin-right: 10px;
+  }
+
+  .hero.section-shell .hero-layout {
+    padding-top: 66px;
+    padding-bottom: 32px;
+  }
+
+  .hero-art {
+    min-height: 300px;
+    transform: scale(.78);
+    margin-bottom: -60px;
+  }
+
+  .button {
+    min-height: 42px;
+    padding: 10px 14px;
+  }
+}
+
+/* 13. Accessibility: avoid forced small text on zoomed layouts */
+@media (min-width: 761px) {
+  .platform-card p,
+  .team-card p,
+  .principle p,
+  .subpage-card p {
+    font-size: 13px;
+  }
+}
+
+
+
+.team-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.team-card img {
+    height: auto !important;
+    max-height: none;
+}
+/* Hero heading */
+.hero-copy h1 {
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+/* Hero description */
+.hero-copy .hero-lede {
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 400;
+    max-width: 600px;
+}
+
+/* Match Platform Blueprint heading to the Team heading */
+.editorial-photo-copy h2 {
+    font-size: clamp(2rem, 4.8vw, 4rem);
+    line-height: 1.05;
+}
+
+/* Keep the emphasized subtitle consistent */
+.editorial-photo-copy h2 em {
+    font-size: inherit;
+}
+
+.editorial-photo-copy h2,
+.team-heading h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.05;
+}
+
+/* Countries ticker — reduce font size */
+.ticker {
+    font-size: 0.85rem;
+}
+
+.ticker-track {
+    font-size: inherit;
+}
+
+/* Push the country ticker section upward */
+.ticker {
+    margin-top: 0;
+}
+
+.ticker {
+    margin-top: -30px;
 }
