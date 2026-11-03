@@ -4478,7 +4478,7 @@ h2 {
 
 /* 8. Keep the fixed-height hero from feeling excessively tall */
 .hero.section-shell {
-  height: clamp(520px, 70vh, 660px);
+  height: clamp(520px, 95vh, 660px);
 }
 
 .hero.section-shell .hero-layout {
@@ -4842,7 +4842,7 @@ h2 {
 
 /* Countries ticker — reduce font size */
 .ticker {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
 }
 
 .ticker-track {
@@ -4856,4 +4856,100 @@ h2 {
 
 .ticker {
     margin-top: -30px;
+}
+/* Creator section layout */
+.creator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* Text on the left */
+.creator-copy {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.creator-visual {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 12rem;
+}
+.creator-mockup {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .creator-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .creator-copy {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .creator-visual {
+        grid-column: 1;
+        grid-row: 2;
+         margin-top: 0rem;
+    }
+}
+
+/* LIGHT MODE */
+.ownership-title {
+    color: #000000;
+}
+
+.localization-title {
+    color: #e60000;
+}
+
+/* DARK MODE */
+html[data-theme="dark"] .ownership-title {
+    color: black;
+}
+
+html[data-theme="dark"] .localization-title {
+    color: #ffd629;
+}
+
+/* LIGHT MODE */
+.vision-title {
+    color: #000000;
+}
+
+.statement-title {
+    color: #e60000;
+}
+
+/* DARK MODE */
+html[data-theme="dark"] .vision-title {
+    color: white;
+}
+
+html[data-theme="dark"] .statement-title {
+    color: #ffd629;
+}
+/* LIGHT MODE */
+.mission-title {
+    color: #000000;
+}
+
+.mission-statement-title {
+    color: #e60000;
+}
+
+/* DARK MODE */
+html[data-theme="dark"] .mission-title {
+    color: white;
+}
+
+html[data-theme="dark"] .mission-statement-title {
+    color: #ffd629;
 }
