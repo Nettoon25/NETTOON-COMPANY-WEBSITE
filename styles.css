@@ -4912,7 +4912,7 @@ h2 {
 
 /* DARK MODE */
 html[data-theme="dark"] .ownership-title {
-    color: black;
+    color:white;
 }
 
 html[data-theme="dark"] .localization-title {
@@ -4952,4 +4952,149 @@ html[data-theme="dark"] .mission-title {
 
 html[data-theme="dark"] .mission-statement-title {
     color: #ffd629;
+}
+/* LIGHT MODE */
+.core-values-title {
+    color: #000000;
+}
+
+.cultural-philosophy-title {
+    color: #e60000;
+}
+
+/* DARK MODE */
+html[data-theme="dark"] .core-values-title {
+    color: #e60000;
+}
+
+html[data-theme="dark"] .cultural-philosophy-title {
+    color: #ffd629;
+}
+
+/* =========================================
+   NETTOON — CALL TO ACTION
+   INHERIT ESTABLISHED PLATFORM TYPOGRAPHY
+========================================= */
+/* =========================================
+   NETTOON — CALL TO ACTION
+========================================= */
+
+.cta-section {
+    margin-top: 5rem;
+    padding: 5rem 0;
+}
+
+/* Two-column layout */
+.cta-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* LEFT — TEXT */
+.cta-copy {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+}
+
+.cta-copy .eyebrow {
+    justify-content: flex-start;
+}
+
+.cta-title {
+    margin-bottom: 2rem;
+}
+
+.cta-copy .large-copy {
+    margin-bottom: 1.25rem;
+}
+
+.cta-copy p {
+    margin-bottom: 1.25rem;
+}
+
+.cta-copy strong {
+    font-weight: 700;
+}
+
+/* Closing statement */
+.cta-closing {
+    margin: 2.5rem 0 2rem;
+}
+
+/* RIGHT — IMAGE */
+.cta-visual {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 2rem;
+}
+
+.cta-visual .creator-mockup {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.creator-visual .cta-visual
+{
+
+  margin-top: 100rem;
+}
+
+/* =========================================
+   BRAND COLORS
+========================================= */
+
+/* Light mode */
+.cta-title em,
+.cta-closing em {
+    color: #e60000;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .cta-title em,
+html[data-theme="dark"] .cta-closing em {
+    color: #ffd629;
+}
+
+/* =========================================
+   DESKTOP — PUSH CTA IMAGE DOWN
+========================================= */
+
+@media (min-width: 769px) {
+    .cta-visual {
+        margin-top: 15rem;
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+
+@media (max-width: 768px) {
+
+    .cta-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .cta-copy {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .cta-visual {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 0;
+    }
+
+    .cta-closing {
+        margin: 2rem 0 1.5rem;
+    }
+
 }
