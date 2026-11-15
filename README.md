@@ -223,7 +223,7 @@ Document the exact build and deployment workflow after confirming the repository
 - **Focus:** Technology, digital entertainment, cartoons, and animation
 - **Website:(https://nettoon-frontend.vercel.app/movies)
 - **Email:** nettoon254@gmail.com
-- **Creator Waitlist:(https://docs.google.com/forms/d/e/1FAIpQLScem9PRuKMZUA6T-oplEKMrw1mG6Xohvdhzs8flEXtQyKen_Q/viewform?fbzx=-8311906572010516406l)
+- Creator Waitlist:(https://docs.google.com/forms/d/e/1FAIpQLScem9PRuKMZUA6T-oplEKMrw1mG6Xohvdhzs8flEXtQyKen_Q/viewform?fbzx=-8311906572010516406l)
 
 ---
 
