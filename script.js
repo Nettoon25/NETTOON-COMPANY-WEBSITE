@@ -260,24 +260,56 @@ const countries = [
     ["Vietnam", "vn"],
     ["Yemen", "ye"],
     ["Zambia", "zm"],
-    ["Zimbabwe", "zw"],
-
-    // Additional countries to complete the 195-country convention
-    ["Andorra", "ad"]
+    ["Zimbabwe", "zw"]
 ];
+
+// ========================================
+// COUNTRY TICKER — FLAGS, SUN, MOON & STAR
+// ========================================
 
 const ticker = document.getElementById("countryTicker");
 
 if (ticker) {
-    // Remove accidental duplicates and preserve the first occurrence.
+
+    // Preserve countries and remove duplicate entries.
     const uniqueCountries = [
-        ...new Map(countries.map(([name, code]) => [name, [name, code]])).values()
+        ...new Map(
+            countries.map(([name, code]) => [
+                name,
+                [name, code]
+            ])
+        ).values()
     ];
 
-    function createCountrySequence(label) {
+    // Create a celestial symbol.
+    function createSymbol(imagePath) {
+        const separator = document.createElement("span");
+        separator.className = "ticker-star";
+        separator.setAttribute("aria-hidden", "true");
+
+        const image = document.createElement("img");
+        image.src = imagePath;
+        image.alt = "";
+        image.width = 16;
+        image.height = 16;
+        image.loading = "lazy";
+        image.decoding = "async";
+
+        separator.appendChild(image);
+
+        return separator;
+    }
+
+    // Build the complete sequence.
+    function createCountrySequence() {
         const fragment = document.createDocumentFragment();
 
+        // Initial sun.
+        fragment.appendChild(createSymbol("Sun.png"));
+
         uniqueCountries.forEach(([name, code], index) => {
+
+            // Country.
             const item = document.createElement("span");
             item.className = "country";
 
@@ -289,27 +321,40 @@ if (ticker) {
             flag.loading = "lazy";
             flag.decoding = "async";
 
-            item.append(flag, document.createTextNode(` ${name}`));
+            item.append(
+                flag,
+                document.createTextNode(` ${name}`)
+            );
+
             fragment.appendChild(item);
 
-     const separator = document.createElement("span");
-separator.className = "ticker-star";
-separator.setAttribute("aria-hidden", "true");
+            // Alternate moon, original star and sun.
+            const nextSymbol = index % 3;
 
-const star = document.createElement("img");
-star.src = "Kevin's Star.png";
-star.alt = "";
-star.width = 16;
-star.height = 16;
-star.loading = "lazy";
-
-separator.appendChild(star);
-fragment.appendChild(separator);
+            if (nextSymbol === 0) {
+                fragment.appendChild(createSymbol("Moon.png"));
+            } else if (nextSymbol === 1) {
+                fragment.appendChild(createSymbol("Kevin's Star.png"));
+            } else {
+                fragment.appendChild(createSymbol("sun.png"));
+            }
         });
 
         return fragment;
     }
 
-    ticker.replaceChildren(createCountrySequence());
-    ticker.setAttribute("aria-label", "Countries represented around the world");
+    // Create scrolling track.
+    const track = document.createElement("div");
+    track.className = "ticker-track";
+
+    // Duplicate sequence for continuous movement.
+    track.appendChild(createCountrySequence());
+    track.appendChild(createCountrySequence());
+
+    ticker.replaceChildren(track);
+
+    ticker.setAttribute(
+        "aria-label",
+        "Countries represented around the world"
+    );
 }

@@ -5098,3 +5098,80 @@ html[data-theme="dark"] .cta-closing em {
     }
 
 }
+
+
+/* ========================================
+   CELESTIAL TICKER ANIMATION
+======================================== */
+
+#countryTicker {
+    width: 100%;
+    overflow: hidden;
+}
+
+.country-ticker-track {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+    align-items: center;
+    animation: countryTickerMove 30s linear infinite;
+    will-change: transform;
+}
+
+.country-ticker-track > * {
+    flex-shrink: 0;
+}
+
+.country-ticker-track .country {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    margin-right: 24px;
+}
+
+.country-ticker-track .country img {
+    width: 28px;
+    height: 21px;
+    object-fit: contain;
+}
+
+.country-ticker-track .ticker-star {
+    margin-right: 24px;
+    font-size: 16px;
+}
+
+@keyframes countryTickerMove {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .country-ticker-track {
+        animation: none;
+    }
+}
+
+/* NETTOON ticker — ultra-slow scrolling */
+.ticker-track {
+    animation-duration: 1800s !important;
+    animation-timing-function: linear !important;
+    animation-iteration-count: infinite !important;
+}
+
+/* NETTOON — Sticky country ticker */
+.ticker {
+    position: sticky;
+    top: 72px; /* Match the actual desktop header height */
+    z-index: 100;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 0;
+    background: var(--background, #fff);
+}
