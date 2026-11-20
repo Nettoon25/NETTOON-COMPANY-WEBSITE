@@ -5159,7 +5159,7 @@ html[data-theme="dark"] .cta-closing em {
 
 /* NETTOON ticker — ultra-slow scrolling */
 .ticker-track {
-    animation-duration: 1800s !important;
+    animation-duration: 1600s !important;
     animation-timing-function: linear !important;
     animation-iteration-count: infinite !important;
 }
@@ -5174,4 +5174,30 @@ html[data-theme="dark"] .cta-closing em {
     white-space: nowrap;
     margin-top: 0;
     background: var(--background, #fff);
+}
+
+/* Software names — yellow in dark mode */
+html[data-theme="dark"] .software-page .sw-tool-body h3 {
+    color: #FFD400;
+}
+
+/* Software names: yellow in dark mode */
+html[data-theme="dark"] .software-page .sw-tool-body h3,
+html[data-theme="dark"] .software-page .sw-table tbody td:first-child {
+    color: #FFD400;
+}
+
+/* Software names and selected headings — yellow in dark mode */
+html[data-theme="dark"] .software-page .sw-tool-body h3,
+html[data-theme="dark"] .software-page .sw-table tbody td:first-child,
+html[data-theme="dark"] .software-page .sw-step h3 {
+    color: #FFD400;
+}
+
+/* Selected software and content headings — yellow in dark mode */
+html[data-theme="dark"] .software-page .sw-tool-body h3,
+html[data-theme="dark"] .software-page .sw-table tbody td:first-child,
+html[data-theme="dark"] .software-page .sw-step h3,
+html[data-theme="dark"] .software-page .sw-related a span {
+    color: #FFD400;
 }
